@@ -1,4 +1,3 @@
-# ui.R
 library(shiny)
 
 # Define UI
@@ -9,7 +8,11 @@ ui <- fluidPage(
       HTML(
         "
         body {
-          background: linear-gradient(to bottom, #f2f2f2, #ffffff); /* Gradient background */
+          margin: 0; /* Remove default body margin */
+          padding: 0; /* Remove default body padding */
+          background-image: url('https://img.freepik.com/free-vector/gradient-network-connection-background_23-2148879890.jpg?w=826&amp;t=st=1707842159~exp=1707842759~hmac=7dc76e76b0dcc9e6c02bee027a3348481bd0dd5df8cdb40aa03a4fc5bc70c4d5'); /* Background image */
+          background-size: cover; /* Cover the entire background */
+          background-position: center; /* Center the background image */
           font-family: 'Arial', sans-serif; /* Change font */
         }
         
@@ -68,30 +71,33 @@ ui <- fluidPage(
     )
   ),
   
-  div(class = "container",
-      div(class = "title",
-          h1(HTML("<span class='red-underline'>STATE</span> <span class='red-underline'>DEMOGRAPHIC</span> <span class='red-underline'>ANALYSIS</span>"),
-             style = "color: #28a745;"  # Green color for heading
-          )
-      ),
-      
-      sidebarLayout(
-        sidebarPanel(
-          class = "sidebar",
-          selectInput("state", "Select State", choices = unique(df$state_name)),
-          br(),
-          selectInput("plotType", "Select Plot Type",
-                      choices = c("Population Plot", "Pie Chart", "Bubble Plot", "Circular Plot", "Male Population Plot")),
-          br(),
-          actionButton("submit", "Submit", class = "btn btn-primary btn-block")
-        ),
-        mainPanel(
-          class = "plot",
-          plotOutput("selectedPlot")
+  div(
+    class = "container",
+    div(class = "title",
+        h1(HTML("<span class='red-underline'>STATE</span> <span class='red-underline'>DEMOGRAPHIC</span> <span class='red-underline'>ANALYSIS</span>"),
+           style = "color: #28a745;"  # Green color for heading
         )
+    ),
+    
+    sidebarLayout(
+      sidebarPanel(
+        class = "sidebar",
+        selectInput("state", "Select State", choices = unique(df$state_name)),
+        br(),
+        selectInput("plotType", "Select Plot Type",
+                    choices = c("Population Plot", "Pie Chart", "Bubble Plot", "Circular Plot", "Male Population Plot")),
+        br(),
+        actionButton("submit", "Submit", class = "btn btn-primary btn-block")
+      ),
+      mainPanel(
+        class = "plot",
+        plotOutput("selectedPlot")
       )
+    )
   )
 )
+
+
 
 
 

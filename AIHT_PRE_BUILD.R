@@ -1,3 +1,4 @@
+
 #install.packages("dplyr")
 #library(dplyr)
 ##install.packages("tidyverse")
@@ -99,7 +100,7 @@ females <- sum(jkdf$population_female)
 
 # Bar graph
 maleFemaledf <- data.frame(Gender = c("Females", "Males"),
-                       Population = c(females, males))
+                           Population = c(females, males))
 
 # Plot for bar graph
 ggplot(maleFemaledf, aes(x = Gender, y = Population, fill = Gender)) +
@@ -207,5 +208,4 @@ maleFemaledf <- data.frame(Gender = c("Females", "Males"),
 ggplot(maleFemaledf, aes(x = Gender, y = Population, fill = Gender)) +
   geom_bar(stat = "identity") +
   labs(x = "Gender", y = "Graduates", title = "Graduates by Gender (Bar Graph)")
-
 
